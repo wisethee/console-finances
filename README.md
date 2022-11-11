@@ -27,7 +27,7 @@ When you open your code in the browser your resulting analysis should look simil
   Greatest Decrease in Profits: Sep-2013 ($-2196167)
   ```
 
-Your final code should print the analysis to the console.
+The final code should print the analysis to the console.
 
 ## License
 This project is open source and available under the [MIT License](LICENSE.md).
