@@ -156,3 +156,16 @@ const [dateDecreaseProfit, decreaseProfit] = findGreatesDecreaseInProfits;
 console.log(
   `Greatest Decrease in Profits: ${dateDecreaseProfit} ($${decreaseProfit})`
 );
+
+/** OPTIONAL - add results to DOM */
+const tm = document.getElementById("total-months");
+const t = document.getElementById("total");
+const ac = document.getElementById("average-change");
+const gip = document.getElementById("gip");
+const gdp = document.getElementById("gdp");
+
+tm.innerHTML = `Total Months: <strong>${totalMonths}</strong>`;
+t.innerHTML = `Total: <strong>$${total}</strong>`;
+ac.innerHTML = `Average Change: <strong>$${averageChange}</strong>`;
+gip.innerHTML = `Greatest Increase in Profits: <strong>${dateIcreaseProfit} ($${increaseProfit})</strong>`;
+gdp.innerHTML = `Greatest Decrease in Profits: <strong>${dateDecreaseProfit} ($${decreaseProfit})</strong>`;
