@@ -1,6 +1,8 @@
 # :file_folder: Console Finances
 Creating code for analyzing the financial records of a company.
 
+![Screenshot](https://github.com/wisethee/console-finances/blob/main/assets/cover.jpg?raw=true)
+
 ### Instructions
 
 1. Create a new GitHub repo called `Console-Finances`. Then, clone it to your computer.
