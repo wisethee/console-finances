@@ -125,10 +125,17 @@ console.log(`Total Months: ${totalMonths}`);
 // Store all profit or losses values in a different array called "profitOrLosses"
 const profitOrLosses = FINANCES.map((item) => item[1]);
 
-// Calculate the total
-const total = profitOrLosses.reduce((previousValue, currentValue) => {
-  return previousValue + currentValue;
-}, 0);
+// Calculate the total using reduce
+// const total = profitOrLosses.reduce((previousValue, currentValue) => {
+//   return previousValue + currentValue;
+// }, 0);
+
+// Calculate the total using "for" loop
+let total = 0;
+
+for (let i = 0; i < profitOrLosses.length; i++) {
+  total = total + profitOrLosses[i];
+}
 console.log(`Total: $${total}`);
 
 // STEP 3: The average of the changes in Profit/Losses over the entire period.
@@ -157,7 +164,7 @@ console.log(
   `Greatest Decrease in Profits: ${dateDecreaseProfit} ($${decreaseProfit})`
 );
 
-/** OPTIONAL - add results to DOM */
+/** OPTIONAL - add results to the DOM */
 const totalMonthsEl = document.getElementById("total-months");
 const totalEl = document.getElementById("total");
 const averageChangeEl = document.getElementById("average-change");
