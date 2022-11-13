@@ -152,20 +152,12 @@ const mean = averageChangeTotal / monthlyChanges.length;
 const averageChange = Number(mean.toFixed(2));
 console.log(`Average Change: $${averageChange}`);
 
-// Profit Percentages
-const percentages = monthlyChanges.map((item, index) => {
-  if (index !== 0) {
-    const val = (item / profitOrLosses[index - 1]) * 100;
-    return val;
-  } else {
-    return 0;
-  }
-});
-
 // Greatest increase in profits
-const greatestIncreaseInProfits = Math.max(...percentages);
+const greatestIncreaseInProfits = Math.max(...monthlyChanges);
 
-const getIncreaseInProfitIndex = percentages.indexOf(greatestIncreaseInProfits);
+const getIncreaseInProfitIndex = monthlyChanges.indexOf(
+  greatestIncreaseInProfits
+);
 const [increaseInProfitDate, increaseInProfitVal] =
   FINANCES[getIncreaseInProfitIndex];
 console.log(
@@ -173,8 +165,10 @@ console.log(
 );
 
 // Greatest decrease in profits
-const greatestDecreaseInProfits = Math.min(...percentages);
-const getDecreaseInProfitIndex = percentages.indexOf(greatestDecreaseInProfits);
+const greatestDecreaseInProfits = Math.min(...monthlyChanges);
+const getDecreaseInProfitIndex = monthlyChanges.indexOf(
+  greatestDecreaseInProfits
+);
 const [decreaseInProfitDate, decreaseInProfitVal] =
   FINANCES[getDecreaseInProfitIndex];
 
@@ -194,3 +188,5 @@ totalEl.innerHTML = `Total: <strong>$${total}</strong>`;
 averageChangeEl.innerHTML = `Average Change: <strong>$${averageChange}</strong>`;
 greatestIncreaseInProfitEl.innerHTML = `Greatest Increase in Profits: <strong>${increaseInProfitDate} ($${increaseInProfitVal})</strong>`;
 greatestDecreaseInProfitEl.innerHTML = `Greatest Decrease in Profits: <strong>${decreaseInProfitDate} ($${decreaseInProfitVal})</strong>`;
+
+console.log(monthlyChanges);

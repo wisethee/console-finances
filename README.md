@@ -14,8 +14,7 @@ Creating code for analyzing the financial records of a company.
 5. Create an array called "monthlyChanges" and store the difference between current value and previous value
 6. Sum all "monthlyChanges" and return "averageChangeTotal"
 7. Calculate mean of "averageChangeTotal"
-8. Calculate profit percentages between current and previous profit and return the percentage in a new array called "percentages"
-9. Return the greatest increase and decrease in profits from "percentages" array
+8. Return min and max of monthlyChanges as greatest increase and decrease in profits
 
 
 ## Instructions
