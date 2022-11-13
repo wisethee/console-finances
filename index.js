@@ -126,55 +126,60 @@ console.log(`Total Months: ${totalMonths}`);
 const profitOrLosses = FINANCES.map((item) => item[1]);
 
 // Calculate the total using reduce
-// const total = profitOrLosses.reduce((previousValue, currentValue) => {
-//   return previousValue + currentValue;
-// }, 0);
-
-// Calculate the total using "for" loop
-let total = 0;
-
-for (let i = 0; i < profitOrLosses.length; i++) {
-  total = total + profitOrLosses[i];
-}
+const total = profitOrLosses.reduce((previousValue, currentValue) => {
+  return previousValue + currentValue;
+}, 0);
 console.log(`Total: $${total}`);
 
 // STEP 3: The average of the changes in Profit/Losses over the entire period.
 // Average Change
-const mean = total / totalMonths;
-const averageChange = Number(mean.toFixed(2));
-console.log(`Average Change: $${averageChange}`);
-
-// Get all monthly changes in a single array
 const monthlyChanges = [];
 
 for (let i = 0; i < profitOrLosses.length; i++) {
-  if (i === 0) {
-    monthlyChanges.push(profitOrLosses[0]);
-  } else {
-    monthlyChanges.push(profitOrLosses[i] - profitOrLosses[i - 1]);
-  }
+  !i
+    ? monthlyChanges.push(profitOrLosses[0])
+    : monthlyChanges.push(profitOrLosses[i] - profitOrLosses[i - 1]);
 }
 
-// Greatest increase in profits
-const greatestIncreaseInProfits = Math.max(...monthlyChanges);
-const getIncreaseInProfitIndex = monthlyChanges.indexOf(
-  greatestIncreaseInProfits
+const averageChangeTotal = monthlyChanges.reduce(
+  (previousMonth, currentMonth) => {
+    return previousMonth + currentMonth;
+  },
+  0
 );
-const [increaseInProfitDate] = FINANCES[getIncreaseInProfitIndex];
-console.log(increaseInProfitDate);
+
+const mean = averageChangeTotal / monthlyChanges.length;
+const averageChange = Number(mean.toFixed(2));
+console.log(`Average Change: $${averageChange}`);
+
+// Profit Percentages
+const percentages = monthlyChanges.map((item, index) => {
+  if (index !== 0) {
+    const val = (item / profitOrLosses[index - 1]) * 100;
+    return val;
+  } else {
+    return 0;
+  }
+});
+
+// Greatest increase in profits
+const greatestIncreaseInProfits = Math.max(...percentages);
+
+const getIncreaseInProfitIndex = percentages.indexOf(greatestIncreaseInProfits);
+const [increaseInProfitDate, increaseInProfitVal] =
+  FINANCES[getIncreaseInProfitIndex];
 console.log(
-  `Greatest Increase in Profits: ${increaseInProfitDate} ($${greatestIncreaseInProfits})`
+  `Greatest Increase in Profits: ${increaseInProfitDate} ($${increaseInProfitVal})`
 );
 
 // Greatest decrease in profits
-const greatestDecreaseInProfits = Math.min(...monthlyChanges);
-const getDecreaseInProfitIndex = monthlyChanges.indexOf(
-  greatestDecreaseInProfits
-);
-const [decreaseInProfitDate] = FINANCES[getDecreaseInProfitIndex];
+const greatestDecreaseInProfits = Math.min(...percentages);
+const getDecreaseInProfitIndex = percentages.indexOf(greatestDecreaseInProfits);
+const [decreaseInProfitDate, decreaseInProfitVal] =
+  FINANCES[getDecreaseInProfitIndex];
 
 console.log(
-  `Greatest Decrease in Profits: ${decreaseInProfitDate} ($${greatestDecreaseInProfits})`
+  `Greatest Decrease in Profits: ${decreaseInProfitDate} ($${decreaseInProfitVal})`
 );
 
 /** OPTIONAL - add results to the DOM */
@@ -187,5 +192,5 @@ const greatestDecreaseInProfitEl = document.getElementById("gdp");
 totalMonthsEl.innerHTML = `Total Months: <strong>${totalMonths}</strong>`;
 totalEl.innerHTML = `Total: <strong>$${total}</strong>`;
 averageChangeEl.innerHTML = `Average Change: <strong>$${averageChange}</strong>`;
-greatestIncreaseInProfitEl.innerHTML = `Greatest Increase in Profits: <strong>${increaseInProfitDate} ($${greatestIncreaseInProfits})</strong>`;
-greatestDecreaseInProfitEl.innerHTML = `Greatest Decrease in Profits: <strong>${decreaseInProfitDate} ($${greatestDecreaseInProfits})</strong>`;
+greatestIncreaseInProfitEl.innerHTML = `Greatest Increase in Profits: <strong>${increaseInProfitDate} ($${increaseInProfitVal})</strong>`;
+greatestDecreaseInProfitEl.innerHTML = `Greatest Decrease in Profits: <strong>${decreaseInProfitDate} ($${decreaseInProfitVal})</strong>`;
