@@ -3,14 +3,14 @@ Creating code for analyzing the financial records of a company.
 
 ## My Solution
 1. Store all months in a different array called "months"
-2. Store ale profits and losses in an array called "totalMonths"
+2. Store ale profits and losses in an array called "profitOrLosses"
 3. Check "months" array for duplicates
 4. Calculate the total profit or loss
 5. Create an array called "monthlyChanges" and store the difference between current value and previous value
 6. Sum all "monthlyChanges" and return "averageChangeTotal"
 7. Calculate mean of "averageChangeTotal"
 8. Calculate profit percentages between current and previous profit and return the percentage in a new array called "percentages"
-9. Return the greatest increase and decrease in profits from percentages
+9. Return the greatest increase and decrease in profits from "percentages" array
 
 
 [Demo URL](https://wisethee.github.io/console-finances/)
