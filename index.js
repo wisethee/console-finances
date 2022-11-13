@@ -101,7 +101,7 @@ const FINANCES = [
 /**
  * Calculate the total number of months included in the dataset.
  *
- * 1. store all months in a diffrent array called "months"
+ * 1. store all months in a different array called "months"
  * 2. check the new array for duplicates
  */
 
@@ -109,7 +109,7 @@ console.log("Financial Analysis");
 console.log("----------------------------");
 
 // STEP 1: The total number of months included in the dataset.
-// Store all months in a diffrent array called "months"
+// Store all months in a different array called "months"
 const months = FINANCES.map((item) => item[0]);
 
 // Check for duplicates
@@ -122,13 +122,20 @@ const totalMonths = filteredMonths.length;
 console.log(`Total Months: ${totalMonths}`);
 
 // STEP 2: The net total amount of Profit/Losses over the entire period.
-// Store all profit or losses values in a diffrent array called "profitOrLosses"
+// Store all profit or losses values in a different array called "profitOrLosses"
 const profitOrLosses = FINANCES.map((item) => item[1]);
 
-// Calculate the total
-const total = profitOrLosses.reduce((previousValue, currentValue) => {
-  return previousValue + currentValue;
-}, 0);
+// Calculate the total using reduce
+// const total = profitOrLosses.reduce((previousValue, currentValue) => {
+//   return previousValue + currentValue;
+// }, 0);
+
+// Calculate the total using "for" loop
+let total = 0;
+
+for (let i = 0; i < profitOrLosses.length; i++) {
+  total = total + profitOrLosses[i];
+}
 console.log(`Total: $${total}`);
 
 // STEP 3: The average of the changes in Profit/Losses over the entire period.
@@ -138,21 +145,34 @@ const averageChange = Number(mean.toFixed(2));
 console.log(`Average Change: $${averageChange}`);
 
 // Greatest increase in profits
-const greatesIncreaseInProfits = Math.max(...profitOrLosses);
-const findGreatesIncreaseInProfits = FINANCES.find(
-  (item) => item[1] === greatesIncreaseInProfits
+const greatestIncreaseInProfits = Math.max(...profitOrLosses);
+const findGreatestIncreaseInProfits = FINANCES.find(
+  (item) => item[1] === greatestIncreaseInProfits
 );
-const [dateIcreaseProfit, increaseProfit] = findGreatesIncreaseInProfits;
+const [dateIncreaseInProfit, increaseProfit] = findGreatestIncreaseInProfits;
 console.log(
-  `Greatest Increase in Profits: ${dateIcreaseProfit} ($${increaseProfit})`
+  `Greatest Increase in Profits: ${dateIncreaseInProfit} ($${increaseProfit})`
 );
 
 // Greatest decrease in profits
-const greatesDecreaseInProfits = Math.min(...profitOrLosses);
-const findGreatesDecreaseInProfits = FINANCES.find(
-  (item) => item[1] === greatesDecreaseInProfits
+const greatestDecreaseInProfits = Math.min(...profitOrLosses);
+const findGreatestDecreaseInProfits = FINANCES.find(
+  (item) => item[1] === greatestDecreaseInProfits
 );
-const [dateDecreaseProfit, decreaseProfit] = findGreatesDecreaseInProfits;
+const [dateDecreaseProfit, decreaseProfit] = findGreatestDecreaseInProfits;
 console.log(
   `Greatest Decrease in Profits: ${dateDecreaseProfit} ($${decreaseProfit})`
 );
+
+/** OPTIONAL - add results to the DOM */
+const totalMonthsEl = document.getElementById("total-months");
+const totalEl = document.getElementById("total");
+const averageChangeEl = document.getElementById("average-change");
+const greatestIncreaseInProfitEl = document.getElementById("gip");
+const greatestDecreaseInProfitEl = document.getElementById("gdp");
+
+totalMonthsEl.innerHTML = `Total Months: <strong>${totalMonths}</strong>`;
+totalEl.innerHTML = `Total: <strong>$${total}</strong>`;
+averageChangeEl.innerHTML = `Average Change: <strong>$${averageChange}</strong>`;
+greatestIncreaseInProfitEl.innerHTML = `Greatest Increase in Profits: <strong>${dateIncreaseInProfit} ($${increaseProfit})</strong>`;
+greatestDecreaseInProfitEl.innerHTML = `Greatest Decrease in Profits: <strong>${dateDecreaseProfit} ($${decreaseProfit})</strong>`;
