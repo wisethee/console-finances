@@ -188,5 +188,3 @@ totalEl.innerHTML = `Total: <strong>$${total}</strong>`;
 averageChangeEl.innerHTML = `Average Change: <strong>$${averageChange}</strong>`;
 greatestIncreaseInProfitEl.innerHTML = `Greatest Increase in Profits: <strong>${increaseInProfitDate} ($${increaseInProfitVal})</strong>`;
 greatestDecreaseInProfitEl.innerHTML = `Greatest Decrease in Profits: <strong>${decreaseInProfitDate} ($${decreaseInProfitVal})</strong>`;
-
-console.log(monthlyChanges);
