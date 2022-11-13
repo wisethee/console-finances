@@ -1,6 +1,11 @@
 # :file_folder: Console Finances
 Creating code for analyzing the financial records of a company.
 
+[Demo URL](https://wisethee.github.io/console-finances/)
+
+![Screenshot](https://github.com/wisethee/console-finances/blob/main/assets/cover.jpg?raw=true)
+
+
 ## My Solution
 1. Store all months in a different array called "months"
 2. Store ale profits and losses in an array called "profitOrLosses"
@@ -11,11 +16,6 @@ Creating code for analyzing the financial records of a company.
 7. Calculate mean of "averageChangeTotal"
 8. Calculate profit percentages between current and previous profit and return the percentage in a new array called "percentages"
 9. Return the greatest increase and decrease in profits from "percentages" array
-
-
-[Demo URL](https://wisethee.github.io/console-finances/)
-
-![Screenshot](https://github.com/wisethee/console-finances/blob/main/assets/cover.jpg?raw=true)
 
 
 ## Instructions
