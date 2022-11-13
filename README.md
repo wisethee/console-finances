@@ -19,7 +19,6 @@ Creating code for analyzing the financial records of a company.
 
 
 ## Instructions
-
 1. Create a new GitHub repo called `Console-Finances`. Then, clone it to your computer.
 2. Copy the starter files in your local git repository.
 
