@@ -161,7 +161,7 @@ const getIncreaseInProfitIndex = monthlyChanges.indexOf(
 const [increaseInProfitDate, increaseInProfitVal] =
   FINANCES[getIncreaseInProfitIndex];
 console.log(
-  `Greatest Increase in Profits: ${increaseInProfitDate} ($${increaseInProfitVal})`
+  `Greatest Increase in Profits: ${increaseInProfitDate} ($${greatestIncreaseInProfits})`
 );
 
 // Greatest decrease in profits
@@ -173,7 +173,7 @@ const [decreaseInProfitDate, decreaseInProfitVal] =
   FINANCES[getDecreaseInProfitIndex];
 
 console.log(
-  `Greatest Decrease in Profits: ${decreaseInProfitDate} ($${decreaseInProfitVal})`
+  `Greatest Decrease in Profits: ${decreaseInProfitDate} ($${greatestDecreaseInProfits})`
 );
 
 /** OPTIONAL - add results to the DOM */
@@ -186,5 +186,5 @@ const greatestDecreaseInProfitEl = document.getElementById("gdp");
 totalMonthsEl.innerHTML = `Total Months: <strong>${totalMonths}</strong>`;
 totalEl.innerHTML = `Total: <strong>$${total}</strong>`;
 averageChangeEl.innerHTML = `Average Change: <strong>$${averageChange}</strong>`;
-greatestIncreaseInProfitEl.innerHTML = `Greatest Increase in Profits: <strong>${increaseInProfitDate} ($${increaseInProfitVal})</strong>`;
-greatestDecreaseInProfitEl.innerHTML = `Greatest Decrease in Profits: <strong>${decreaseInProfitDate} ($${decreaseInProfitVal})</strong>`;
+greatestIncreaseInProfitEl.innerHTML = `Greatest Increase in Profits: <strong>${increaseInProfitDate} ($${greatestIncreaseInProfits})</strong>`;
+greatestDecreaseInProfitEl.innerHTML = `Greatest Decrease in Profits: <strong>${decreaseInProfitDate} ($${greatestDecreaseInProfits})</strong>`;
