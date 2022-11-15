@@ -98,16 +98,6 @@ const FINANCES = [
  * * The greatest decrease in losses (date and amount) over the entire period.
  */
 
-/**
- * Calculate the total number of months included in the dataset.
- *
- * 1. store all months in a different array called "months"
- * 2. check the new array for duplicates
- */
-
-console.log("Financial Analysis");
-console.log("----------------------------");
-
 // STEP 1: The total number of months included in the dataset.
 // Store all months in a different array called "months"
 const months = FINANCES.map((item) => item[0]);
@@ -119,7 +109,6 @@ const filteredMonths = months.filter((value, index, arrayToValidate) => {
 
 // Store months array length totalMonths an print the value in console
 const totalMonths = filteredMonths.length;
-console.log(`Total Months: ${totalMonths}`);
 
 // STEP 2: The net total amount of Profit/Losses over the entire period.
 // Store all profit or losses values in a different array called "profitOrLosses"
@@ -129,7 +118,6 @@ const profitOrLosses = FINANCES.map((item) => item[1]);
 const total = profitOrLosses.reduce((previousValue, currentValue) => {
   return previousValue + currentValue;
 }, 0);
-console.log(`Total: $${total}`);
 
 // STEP 3: The average of the changes in Profit/Losses over the entire period.
 // Average Change
@@ -148,9 +136,9 @@ const averageChangeTotal = monthlyChanges.reduce(
   0
 );
 
+// Get mean value
 const mean = averageChangeTotal / monthlyChanges.length;
 const averageChange = Number(mean.toFixed(2));
-console.log(`Average Change: $${averageChange}`);
 
 // Greatest increase in profits
 const greatestIncreaseInProfits = Math.max(...monthlyChanges);
@@ -160,9 +148,6 @@ const getIncreaseInProfitIndex = monthlyChanges.indexOf(
 );
 const [increaseInProfitDate, increaseInProfitVal] =
   FINANCES[getIncreaseInProfitIndex];
-console.log(
-  `Greatest Increase in Profits: ${increaseInProfitDate} ($${greatestIncreaseInProfits})`
-);
 
 // Greatest decrease in profits
 const greatestDecreaseInProfits = Math.min(...monthlyChanges);
@@ -172,6 +157,15 @@ const getDecreaseInProfitIndex = monthlyChanges.indexOf(
 const [decreaseInProfitDate, decreaseInProfitVal] =
   FINANCES[getDecreaseInProfitIndex];
 
+/** Console Output */
+console.log("Financial Analysis");
+console.log("----------------------------");
+console.log(`Total Months: ${totalMonths}`);
+console.log(`Total: $${total}`);
+console.log(`Average Change: $${averageChange}`);
+console.log(
+  `Greatest Increase in Profits: ${increaseInProfitDate} ($${greatestIncreaseInProfits})`
+);
 console.log(
   `Greatest Decrease in Profits: ${decreaseInProfitDate} ($${greatestDecreaseInProfits})`
 );
